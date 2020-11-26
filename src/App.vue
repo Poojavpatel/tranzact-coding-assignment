@@ -1,17 +1,21 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
-  </div>
+  <v-app>
+    <Coins/>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+
+import Coins from './components/Coins';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Coins,
+  },
+  data() {
+    return {
+    };
   },
 };
 </script>
