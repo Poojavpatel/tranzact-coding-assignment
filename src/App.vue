@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-card>
+    <v-card class="elevation-0">
       <v-card-title class="justify-center">
         Top Crypto Currency List
       </v-card-title>

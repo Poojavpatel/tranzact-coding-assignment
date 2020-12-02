@@ -5,7 +5,7 @@
     :items="coins"
     :items-per-page="5"
     item-key="name"
-    class="elevation-1"
+    class="elevation-1 mx-10 my-3"
   >
     <template v-slot:body="{ items }">
       <tbody>
@@ -15,8 +15,10 @@
           </td>
           <td class="text-left"><strong>{{ item.name }}</strong></td>
           <td>{{ item.symbol }}</td>
-          <td class="text-right">{{ item.price ? _.round(item.price, 3) : '-' }}</td>
-          <td class="text-right">{{ item.change }}</td>
+          <td class="text-right">{{ item.price ? `$${_.round(item.price, 3)}` : '-' }}</td>
+          <td class="text-right">
+            <span :class = "(item.change < 0)?'red':'green'">{{ item.change }}</span>
+          </td>
         </tr>
       </tbody>
     </template>
@@ -66,3 +68,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+.red{
+  color: red;
+  background-color: transparent !important;
+}
+.green{
+  color: green;
+  background-color: transparent !important;
+}
+</style>
