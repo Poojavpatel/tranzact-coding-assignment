@@ -1,18 +1,25 @@
 <template>
+  <div>
   <v-data-table
     :headers="coinHeaders"
     :items="coins"
     :items-per-page="5"
+    item-key="name"
     class="elevation-1"
   >
-  <template slot="items" slot-scope="props">
-    <td><img :src="props.item.iconUrl">{{ props.item}}</td>
-    <td>{{ props.item }}</td>
-    <td>{{ props.item.symbol }}</td>
-    <td>{{ props.item.price }}</td>
-    <td>{{ props.item.change }}</td>
-  </template>
+    <template v-slot:body="{ items }">
+      <tbody>
+        <tr v-for="item in items" :key="item.name">
+          <td><img :src="item.iconUrl" width="20px"></td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.symbol }}</td>
+          <td>{{ item.price ? _.round(item.price, 3) : '-' }}</td>
+          <td>{{ item.change }}</td>
+        </tr>
+      </tbody>
+    </template>
   </v-data-table>
+  </div>
 </template>
 
 <script>
@@ -28,18 +35,23 @@ export default {
       coinHeaders: [
         {
           text: 'Icon',
-          align: 'start',
+          align: 'center',
           sortable: false,
-          value: 'iconUrl',
+          value: 'icon',
         },
-        { text: 'Name', value: 'name' },
-        { text: 'Symbol', value: 'symbol' },
-        { text: 'Price', value: 'price' },
-        { text: 'Price Change', value: 'change' },
+        { text: 'Name', value: 'name', align: 'center' },
+        { text: 'Symbol', value: 'symbol', align: 'center' },
+        { text: 'Price', value: 'price', align: 'center' },
+        { text: 'Price Change', value: 'change', align: 'center' },
       ],
       checking: false,
       heartbeats: [],
     };
+  },
+  computed: {
+    _() {
+      return _;
+    },
   },
   async mounted() {
     const response = await axios.get('https://api.coinranking.com/v1/public/coins/?limit=100');
