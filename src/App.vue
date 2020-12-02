@@ -1,6 +1,13 @@
 <template>
   <v-app>
-    <Coins/>
+    <v-card>
+      <v-card-title class="justify-center">
+        Top Crypto Currency List
+      </v-card-title>
+      <v-card-text>
+        <Coins/>
+      </v-card-text>
+  </v-card>
   </v-app>
 </template>
 

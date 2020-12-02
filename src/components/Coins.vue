@@ -10,11 +10,13 @@
     <template v-slot:body="{ items }">
       <tbody>
         <tr v-for="item in items" :key="item.name">
-          <td><img :src="item.iconUrl" width="20px"></td>
-          <td>{{ item.name }}</td>
+          <td class="text-center">
+            <img :src="item.iconUrl" width="30px" class="mx-3">
+          </td>
+          <td class="text-left"><strong>{{ item.name }}</strong></td>
           <td>{{ item.symbol }}</td>
-          <td>{{ item.price ? _.round(item.price, 3) : '-' }}</td>
-          <td>{{ item.change }}</td>
+          <td class="text-right">{{ item.price ? _.round(item.price, 3) : '-' }}</td>
+          <td class="text-right">{{ item.change }}</td>
         </tr>
       </tbody>
     </template>
@@ -39,10 +41,10 @@ export default {
           sortable: false,
           value: 'icon',
         },
-        { text: 'Name', value: 'name', align: 'center' },
+        { text: 'Name', value: 'name' },
         { text: 'Symbol', value: 'symbol', align: 'center' },
-        { text: 'Price', value: 'price', align: 'center' },
-        { text: 'Price Change', value: 'change', align: 'center' },
+        { text: 'Price', value: 'price', align: 'right' },
+        { text: 'Price Change', value: 'change', align: 'right' },
       ],
       checking: false,
       heartbeats: [],
