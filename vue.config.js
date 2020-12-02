@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/tranzact-coding-assignment/'
+  publicPath: './tranzact-coding-assignment/'
 }
